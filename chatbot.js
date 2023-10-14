@@ -1,5 +1,6 @@
 let name = document.getElementById('Name');
 let output = document.getElementById('Output');
+let homeButton = document.getElementById('HomeButton');
 
 name.addEventListener('keydown', function (event) {
     if (event.keyCode == 13) {
@@ -7,3 +8,8 @@ name.addEventListener('keydown', function (event) {
         console.log('Enter Pressed');
     }
 });
+function redirect(page) {
+    window.location.href = page + ".html";
+    console.log('redirected to ' + page);
+};
+
