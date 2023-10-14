@@ -6,6 +6,10 @@
     <title></title>
 </head>
 <body style="background-color:black">
-    <center style="background-color:white; height: 55px; border-width: 1px; border-style: solid; border-color: #000000"><center><button id="HomeButton" style="height: 55px; width: 150px; background-color: white;" type="button"><b>Home</b></button> <button id="AboutUsButton" style="height: 55px; width: 150px; background-color: white;" type="button"><b>About Us</b></button> <button id="AIBotButton" style="height: 55px; width: 150px; background-color: white;" type="button"><b>AIBot</b></button></center></center>
+    <center style="background-color:white; height: 55px; border-width: 1px; border-style: solid; border-color: #000000"><center><button onclick="redirect('Home')" id="HomeButton" style="height: 55px; width: 150px; background-color: white;" type="button"><b>Home</b></button> <button onclick="redirect('AboutUs')" id="AboutUsButton" style="height: 55px; width: 150px; background-color: white;" type="button"><b>About Us</b></button> <button onclick="redirect('AIBot')" id="AIBotButton" style="height: 55px; width: 150px; background-color: white;" type="button"><b>AIBot</b></button></center></center>
+    <p class="scrollabletextbox" type="text" id="Output" style="font-family: verdana; color: white; width:400px;">Hi! I am Investacopia, what is your name?</p>
+    <input type="text" id="input" placeholder="type here"/>
+<script src="chatbot.js"></script>
+
 </body>
 </html>
