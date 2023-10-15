@@ -3,6 +3,65 @@
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
 let updating = false;
+
+function Edit() {
+    
+    let nameInput = document.getElementById('nameInput');
+    let currentSavingsInput = document.getElementById('currentSavingsInput');
+    let salaryInput = document.getElementById('salaryInput');
+    let retirementInput = document.getElementById('retirementInput');
+    let utilitiesInput = document.getElementById('utilitiesInput');
+    let investmentInput = document.getElementById('investmentInput');
+    let carInput = document.getElementById('carInput');
+    let discretionaryInput = document.getElementById('discretionaryInput');
+    let foodInput = document.getElementById('foodInput');
+    let goalInput = document.getElementById('goalInput');
+    let rentInput = document.getElementById('rentInput');
+
+
+    if (nameInput.getAttribute('readonly')) {
+        nameInput.setAttribute('readonly', false);
+        currentSavingsInput.setAttribute('readonly', false);
+        salaryInput.setAttribute('readonly', false);
+        retirementInput.setAttribute('readonly', false);
+        utilitiesInput.setAttribute('readonly', false);
+        investmentInput.setAttribute('readonly', false);
+        carInput.setAttribute('readonly', false);
+        discretionaryInput.setAttribute('readonly', false);
+        foodInput.setAttribute('readonly', false);
+        goalInput.setAttribute('readonly', false);
+        rentInput.setAttribute('readonly', false);
+
+    }
+    else {
+        nameInput.setAttribute('readonly', true);
+        currentSavingsInput.setAttribute('readonly', true);
+        salaryInput.setAttribute('readonly', true);
+        retirementInput.setAttribute('readonly', true);
+        utilitiesInput.setAttribute('readonly', true);
+        investmentInput.setAttribute('readonly', true);
+        carInput.setAttribute('readonly', true);
+        discretionaryInput.setAttribute('readonly', true);
+        foodInput.setAttribute('readonly', true);
+        goalInput.setAttribute('readonly', true);
+        rentInput.setAttribute('readonly', true);
+    }
+}   
+
+function SaveData() {
+    localStorage.setItem('name', nameInput.innerHTML);
+    localStorage.setItem('savings', currentSavingsInput.innerHTML);
+    localStorage.setItem('annualSalary', salaryInput.innerHTML);
+    localStorage.setItem('yearsLeft', retirementInput.innerHTML);
+    localStorage.setItem('rent', rentInput.innerHTML);
+    //localStorage.setItem('savingsPercent', Input.innerHTML);
+    localStorage.setItem('utilities', Input.innerHTML);
+    localStorage.setItem('discretionary', Input.innerHTML);
+    localStorage.setItem('car', Input.innerHTML);
+    localStorage.setItem('food', Input.innerHTML);
+    localStorage.setItem('goal', Input.innerHTML);
+}
+
 if (localStorage.name != undefined) {
     output.innerHTML = 'Good to see you again ' + localStorage.name + '!'
     if (localStorage.annualSalary == undefined || localStorage.rent == undefined || localStorage.utilities == undefined || localStorage.hasCar == undefined || localStorage.car == undefined || localStorage.food == undefined || localStorage.yearsLeft == undefined || localStorage.totalExpenses == undefined || localStorage.totalSaved == undefined) {
@@ -49,6 +108,7 @@ if (localStorage.name != undefined) {
 };
 
 console.log(localStorage.name);
+
 input.addEventListener('keydown', function (event) {
     if (event.keyCode == 13) {
         if (localStorage.name == undefined) {
@@ -154,7 +214,6 @@ input.addEventListener('keydown', function (event) {
                 }
                 output.innerHTML = output.innerHTML + '\nOf all money left over after essentials, about 60% should go towards \"wants\" such as hobbies, travel, and eating out. The remaining 40% should be put away for savings.\n';
                 output.innerHTML = output.innerHTML + 'For you this looks like having $' + (localStorage.totalRemaining * .6).toFixed(2) + ' a month for wants and putting away $' + (localStorage.totalRemaining * .4).toFixed(2) + ' in savings. Does this sound like a good split?';
-
             }
         }
         else if (localStorage.savingPercent == undefined) {
@@ -232,7 +291,6 @@ function redirect(page) {
     //localStorage.clear();
 };
 
-
 function clearData() {
     if (confirm("Are you sure you want to clear all data?")) {
         localStorage.clear(); 
@@ -245,6 +303,7 @@ function makePieChart() {
     let data = [
         1, 1, 1, 1, 1, 1,1
     ];
+
     console.log(data);
     let backgroundColor = [
         "#878BB6",
@@ -255,6 +314,7 @@ function makePieChart() {
         "#c6e2ff",
         "#b3dca0"
     ];
+
     if (!(localStorage.savingPercent == undefined)) {
         data = [
             localStorage.rent,
@@ -265,7 +325,7 @@ function makePieChart() {
             localStorage.savingPercent * localStorage.totalRemaining,
             (1 - localStorage.savingPercent) * localStorage.totalRemaining
         ];
-        console.log(data);
+
         backgroundColor = [
             "#878BB6",
             "#4ACAB4",
@@ -341,4 +401,4 @@ function makeLineChart() {
     });
 }
 //makePieChart();
-//makeLineChart()
+//makeLineChart();
