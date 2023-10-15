@@ -3,7 +3,7 @@
 
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
-if (localStorage.name != undefined) { output.innerHTML = 'Good to see you again ' + localStorage.name + '!\nWhat are you looking to do today?' };
+//if (localStorage.name != undefined) { output.innerHTML = 'Good to see you again ' + localStorage.name + '!\nWhat are you looking to do today?' };
 
 console.log(localStorage.name);
 input.addEventListener('keydown', function (event) {
@@ -183,22 +183,26 @@ function redirect(page) {
 };
 
 let myChart = document.getElementById('myChart').getContext('2d');
-let massPopChar = new Chart(myChart, {
-    type: 'bar',
-    data: {
-        labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-        datasets: [{
-            label: 'Population',
-            data: [
-                617594,
-                181045,
-                105619,
-                153000,
-                105162,
-                96302
-            ]
-        }]
-    },
-    options: {}
-});
+if (!(localStorage.savingPercent == undefined)) {
 
+    let data = [
+        localStorage.rent,
+        localStorage.utilities,
+        localStorage.car,
+        localStorage.food,
+        localStorage.additional,
+        localStorage.savingPercent * localStorage.totalRemaining,
+        (1 - localStorage.savingPercent) * localStorage.totalRemaining
+    ];
+    let expensesPieChart = new Chart(myChart, {
+        type: 'pie',
+        data: {
+            labels: ['Rent', 'Utilities', 'Car', 'Food', 'Additional Expenses', 'Saving', 'Discretionary'],
+            datasets: [{
+                label: 'Spending',
+                data: data
+            }]
+        },
+        options: {}
+    });
+}
