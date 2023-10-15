@@ -182,19 +182,21 @@ function redirect(page) {
         console.log('redirected to ' + page);
 };
 let myChart = document.getElementById('c1').getContext('2d');
-let testChart = new Chart(myChart, {
-    type: 'pie',
+let massPopChar = new Chart(myChart, {
+    type: 'bar',
     data: {
-        labels: [red, green, blue],
+        labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
         datasets:[{
-            label: 'testing',
+            label: 'Population',
             data: [
-                100,
-                200,
-                300
+                617594,
+                181045,
+                105619,
+                153000,
+                105162,
+                96302
             ]
         }]
-
     },
     options: {}
 });
