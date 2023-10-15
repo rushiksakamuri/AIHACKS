@@ -2,7 +2,7 @@
 
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
-let updating = false;
+let pieChart = true;
 
 function Edit() {
     
@@ -400,5 +400,16 @@ function makeLineChart() {
         options: {}
     });
 }
+
+function SwitchGraph() {
+    if (pieChart) {
+        makeLineChart();
+    }
+    else {
+        makePieChart;
+    }
+    pieChart = !pieChart;
+}
 //makePieChart();
 //makeLineChart();
+//switchGraph()
