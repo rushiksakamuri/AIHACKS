@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />-->
+    <title></title>
+</head>
+<body style="background-color:grey">
+    <center style="background-color: darkblue; height: 50px; border-width: 2px; border-style: solid; border-color: #000000; position: fixed; left: 0; right: 0; top: 0; height: 50px; margin-right: 6px; margin-left: 5px">
+        <button onclick="redirect('Home')" id="HomeButton" style="height: 50px; width: 150px; background-color: white;" type="button"><b>Home</b></button>
+        <button onclick="redirect('Account')" id="AboutUsButton" style="height: 50px; width: 150px; background-color: white;" type="button"><b>Account</b></button>
+        <button onclick="redirect('AIBot')" id="AIBotButton" style="height: 50px; width: 150px; background-color: white;" type="button"><b>AIBot</b></button>
+    </center>
+    <h1 style="background-color: darkblue; text-align: center; font-family: verdana; color: white; font-size: 70px; position: fixed; left: 0; right: 0; top: 0; height: 85px; margin-right: 8px; margin-left: 7px">INVESTACOPIA</h1>
+    <h1 style="background-color: darkblue; text-align: center; font-family: verdana; color: white; font-size: 70px; position: fixed; left: 0; right: 0; top: 0; height: 85px; margin-right: 8px; margin-left: 7px">INVESTACOPIA</h1>
+    <center>
+        <button onclick="redirect('Home')" id="EditButton" style="height: 25px; width: 50px; margin-top: 7%; background-color: white;" type="button"><b>Edit</b></button>
+        <button onclick="redirect('Home')" id="ClearButton" style="height: 25px; width: 50px; margin-top: 7%; background-color: white;" type="button"><b>Clear</b></button>
+    </center>
+    <center><h1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Name: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Enter Name</textarea><span style="width:10%;display:inline-block"></span><p1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Current Savings: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 1.5%;" readonly="readonly">Enter Current Savings</textarea></p1></h1></center>
+    <center><h1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Annual Salary: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Enter Annual Salary</textarea><span style="width:10%;display:inline-block"></span><p1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Years Until Retirement: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Years Until Retirement</textarea></p1></h1></center>
+    <center><h1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Rent Cost: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Enter Rent Cost</textarea><span style="width:10%;display:inline-block"></span><p1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Savings per month: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Savings per month</textarea></p1></h1></center>
+    <center><h1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Utilities Cost: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Enter Utilies Cost</textarea><span style="width:10%;display:inline-block"></span><p1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Investments per month: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Investments per month</textarea></p1></h1></center>
+    <center><h1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Car Payment: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Enter Car Payment</textarea><span style="width:10%;display:inline-block"></span><p1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Discretionary: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:350px; height:15px; margin-top: 0.1%;" readonly="readonly">Discretionary Spending</textarea></p1></h1></center>
+    <center><h1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Food Cost: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Enter Food Cost</textarea><span style="width:10%;display:inline-block"></span><p1 style="font-size: 15px; font-family: verdana; color: black; margin-top: 0px">Retirement Goal: <span style="width:5px;display:inline-block"></span><textarea type="text" id="Output" style="resize:none; text-align: center; background-color:white; font-size: 14px; font-family: verdana; color: grey; width:250px; height:15px; margin-top: 0.1%;" readonly="readonly">Retirement Goal</textarea></p1></h1></center>
+
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+    <p id="input"></p>
+   
+    <script src="chatbot.js"></script>
+</body>
+</html>
