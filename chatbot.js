@@ -232,8 +232,11 @@ function redirect(page) {
     //localStorage.clear();
 };
 
+
 function clearData() {
-    localStorage.clear();
+    if (confirm("Are you sure you want to clear all data?")) {
+        localStorage.clear(); 
+    }
 }
 
 function makePieChart() {
