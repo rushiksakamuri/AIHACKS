@@ -1,9 +1,9 @@
 
 //npm i chart.js
-import Chart from 'chart.js'
+
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
-if (localStorage.name != undefined) { output.innerHTML = 'Good to see you again ' + localStorage.name + '!\nWhat are you looking to do today?'};
+if (localStorage.name != undefined) { output.innerHTML = 'Good to see you again ' + localStorage.name + '!\nWhat are you looking to do today?' };
 
 console.log(localStorage.name);
 input.addEventListener('keydown', function (event) {
@@ -151,7 +151,7 @@ input.addEventListener('keydown', function (event) {
                 localStorage.setItem('goal', Number(input.value));
                 output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'Thats a good goal!\n';
                 localStorage(userArray, []);
-                localStorage.setItem('totalSaved', (localStorage.savingPercent * localStorage.totalRemaining * 12 * localStorage.yearsLeft +  Number(localStorage.savings)));
+                localStorage.setItem('totalSaved', (localStorage.savingPercent * localStorage.totalRemaining * 12 * localStorage.yearsLeft + Number(localStorage.savings)));
                 if (Number(localStorage.totalSaved) >= Number(localStorage.goal)) {
                     output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + localStorage.totalSaved.toFixed(2) + ' saved up by the time you retire! Looks like you\'re already on track to reach your goal of $' + localStorage.goal + '!';
                 }
@@ -164,8 +164,8 @@ input.addEventListener('keydown', function (event) {
             }
 
 
-            
-           
+
+
         }
 
         else {
@@ -177,16 +177,17 @@ input.addEventListener('keydown', function (event) {
 })
 
 function redirect(page) {
-        localStorage.clear();
-        window.location.href = page + ".html";
-        console.log('redirected to ' + page);
+    localStorage.clear();
+    window.location.href = page + ".html";
+    console.log('redirected to ' + page);
 };
-let myChart = document.getElementById('c1').getContext('2d');
+
+let myChart = document.getElementById('myChart').getContext('2d');
 let massPopChar = new Chart(myChart, {
     type: 'bar',
     data: {
         labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-        datasets:[{
+        datasets: [{
             label: 'Population',
             data: [
                 617594,
@@ -200,3 +201,4 @@ let massPopChar = new Chart(myChart, {
     },
     options: {}
 });
+
