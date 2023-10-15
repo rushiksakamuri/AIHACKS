@@ -1,3 +1,5 @@
+
+
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
 let updating = false;
@@ -219,22 +221,19 @@ input.addEventListener('keydown', function (event) {
         else if (input.value == '3' || input.value == '3.') {
             output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'You currently are saving ' + (Number(localStorage.savingPercent)*100);
         }
-
-
-
-
-
-
         document.getElementById('Output').scrollTop += 10000000;
         document.getElementById('input').value = '';
     }
 })
 
 function redirect(page) {
-    localStorage.clear();
     window.location.href = page + ".html";
     console.log('redirected to ' + page);
 };
+
+function clearData() {
+    localStorage.clear();
+}
 
 function makePieChart() {
     let myChart = document.getElementById('myChart').getContext('2d');
@@ -247,18 +246,32 @@ function makePieChart() {
             localStorage.food,
             localStorage.additional,
             localStorage.savingPercent * localStorage.totalRemaining,
-            (1 - localStorage.savingPercent) * localStorage.totalRemaining
+            (1 - localStorage.savingPercent) * localStorage.totalRemaining,
+
         ];
+        let backgroundColor = [
+            "#878BB6",
+            "#4ACAB4",
+            "#FF8153",
+            "#a2add0",
+            "#FFEA88",
+            "#c6e2ff",
+            "#b3dca0"
+
+
+        ]
         let expensesPieChart = new Chart(myChart, {
             type: 'pie',
             data: {
                 labels: ['Rent', 'Utilities', 'Car', 'Food', 'Additional Expenses', 'Saving', 'Discretionary'],
                 datasets: [{
                     label: 'Spending',
-                    data: data
+                    data: data,
+                    backgroundColor:backgroundColor
                 }]
             },
             options: {}
         });
     }
 }
+//makePieChart();
