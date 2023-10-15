@@ -229,6 +229,9 @@ input.addEventListener('keydown', function (event) {
 function redirect(page) {
     window.location.href = page + ".html";
     console.log('redirected to ' + page);
+    localStorage.clear();
+
+
 };
 
 function clearData() {
@@ -236,20 +239,33 @@ function clearData() {
 }
 
 function makePieChart() {
-    let myChart = document.getElementById('myChart').getContext('2d');
-    if (!(localStorage.savingPercent == undefined)) {
 
-        let data = [
+    let myChart = document.getElementById('myChart').getContext('2d');
+    let data = [
+        1, 1, 1, 1, 1, 1,1
+    ];
+    console.log(data);
+    let backgroundColor = [
+        "#878BB6",
+        "#4ACAB4",
+        "#FF8153",
+        "#a2add0",
+        "#FFEA88",
+        "#c6e2ff",
+        "#b3dca0"
+    ];
+    if (!(localStorage.savingPercent == undefined)) {
+        data = [
             localStorage.rent,
             localStorage.utilities,
             localStorage.car,
             localStorage.food,
             localStorage.additional,
             localStorage.savingPercent * localStorage.totalRemaining,
-            (1 - localStorage.savingPercent) * localStorage.totalRemaining,
-
+            (1 - localStorage.savingPercent) * localStorage.totalRemaining
         ];
-        let backgroundColor = [
+        console.log(data);
+        backgroundColor = [
             "#878BB6",
             "#4ACAB4",
             "#FF8153",
@@ -257,21 +273,19 @@ function makePieChart() {
             "#FFEA88",
             "#c6e2ff",
             "#b3dca0"
-
-
-        ]
-        let expensesPieChart = new Chart(myChart, {
-            type: 'pie',
-            data: {
-                labels: ['Rent', 'Utilities', 'Car', 'Food', 'Additional Expenses', 'Saving', 'Discretionary'],
-                datasets: [{
-                    label: 'Spending',
-                    data: data,
-                    backgroundColor:backgroundColor
-                }]
-            },
-            options: {}
-        });
+        ];
     }
+    expensesPieChart = new Chart(myChart, {
+        type: 'pie',
+        data: {
+            labels: ['Rent', 'Utilities', 'Car', 'Food', 'Additional Expenses', 'Saving', 'Discretionary'],
+            datasets: [{
+                label: 'Spending',
+                data: data,
+                backgroundColor: backgroundColor
+            }]
+        },
+        options: {}
+    });
 }
 //makePieChart();
