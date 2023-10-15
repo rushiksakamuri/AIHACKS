@@ -229,9 +229,7 @@ input.addEventListener('keydown', function (event) {
 function redirect(page) {
     window.location.href = page + ".html";
     console.log('redirected to ' + page);
-    localStorage.clear();
-
-
+    //localStorage.clear();
 };
 
 function clearData() {
@@ -288,4 +286,56 @@ function makePieChart() {
         options: {}
     });
 }
+
+function makeLineChart() {
+    localStorage.setItem('yearsLeft', 20);
+    let myChart = document.getElementById('myChart').getContext('2d');
+    let data = [
+        1, 1, 1, 1, 1, 1, 1
+    ];
+    let labels = [2023];
+    
+    console.log(data);
+    let backgroundColor = [
+        "#878BB6",
+        "#4ACAB4",
+        "#FF8153",
+        "#a2add0",
+        "#FFEA88",
+        "#c6e2ff",
+        "#b3dca0"
+    ];
+    if (!(localStorage.yearsLeft == undefined)) {
+        let i = 1;
+        data = [localStorage.savings];
+        while (i <= localStorage.yearsLeft) {
+            labels.push((labels[0] + i));
+            data.push(Number(localStorage.savings) + (i * localStorage.savingPercent * localStorage.totalRemaining));
+            i++;
+        }
+        console.log(labels);
+        
+       
+        
+        
+        console.log(data);
+        backgroundColor = [
+            "#878BB6",
+            "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6",
+        ];
+    }
+    expensesLineChart = new Chart(myChart, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Savings',
+                data: data,
+                backgroundColor: backgroundColor
+            }]
+        },
+        options: {}
+    });
+}
 //makePieChart();
+//makeLineChart()
