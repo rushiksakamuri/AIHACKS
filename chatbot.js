@@ -1,9 +1,10 @@
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
-
+let updating = false;
 if (localStorage.name != undefined) {
     output.innerHTML = 'Good to see you again ' + localStorage.name + '!'
-    if (localStorage.annualSalary == undefined || localStorage.rent == undefined || localStorage.utilities == undefined || localStorage.hasCar == undefined || localStorage.car == undefined || localStorage.food == undefined || localStorage.name == yearsLeft || localStorage.name == totalExpenses || localStorage.totalSaved == undefined) {
+    if (localStorage.annualSalary == undefined || localStorage.rent == undefined || localStorage.utilities == undefined || localStorage.hasCar == undefined || localStorage.car == undefined || localStorage.food == undefined || localStorage.yearsLeft == undefined || localStorage.totalExpenses == undefined || localStorage.totalSaved == undefined) {
+        console.log('in');
         output.innerHTML = output.innerHTML + ' Let\'s finish setting up your account!';
         if (localStorage.annualSalary == undefined) {
             output.innerHTML = output.innerHTML + '\nWhat is your current annual salary?';
@@ -37,8 +38,12 @@ if (localStorage.name != undefined) {
         }
         else if (localStorage.goal == undefined) {
             output.innerHTML = output.innerHTML + '\nHow much money do you hope to have saved by the time you retire?';
-        }   
+        }
     }
+    else {
+        output.innerHTML = output.innerHTML + '\nWhat do you want to do today? Type \'?\' for list of current capabilities';
+    } 
+
 };
 
 console.log(localStorage.name);
@@ -167,8 +172,7 @@ input.addEventListener('keydown', function (event) {
             if ((Number(input.value) % 1 === 0)) {
                 if (Number(input.value) > 60) {
                     output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'Thats a lot! Don\'t remember to have fun!';
-                }
-                else if (Number(input.value) < 20) {
+                }                else if (Number(input.value) < 20) {
                     output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'Don\'t forget to try and save some money for later!';
                 }
                 else {
@@ -198,9 +202,29 @@ input.addEventListener('keydown', function (event) {
                 output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'Please enter only the number amount.'
             }
         }
-        else {
-            output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'You have input all necessary data! You make $' + Number(localStorage.annualSalary).toFixed(2) + ' a year and have an extra $' + ((Number(localStorage.annualSalary) / 12) - Number(localStorage.totalExpenses)).toFixed(2) + ' a month after all expenses are paid!';
+        else if (input.value == '?' || input.value == '\'?\'') {
+            output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + '1. Check if you are currently on track to meet retirement goals\n2.Edit information\n3.See how investing and saving in different ways can impact your savings over time';
         }
+        else if (input.value == '1' || input.value == '1.') {
+            if (Number(localStorage.totalSaved) >= Number(localStorage.goal)) {
+                output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + Number(localStorage.totalSaved).toFixed(2) + ' saved up by the time you retire! Looks like you\'re on track to reach your goal of $' + localStorage.goal + '!';
+            }
+            else {
+                output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + Number(localStorage.totalSaved).toFixed(2) + ' saved up by the time you retire. You\'ll have to save your money wisely to reach your goal of $' + localStorage.goal + '.';
+            }
+        }
+        else if (input.value == '2' || input.value == '2.') {
+            output.innerHTML = output.innerHTML +  '\n\n' + input.value + '\n\n' + 'To update information navigate to the Account page.';
+        }
+        else if (input.value == '3' || input.value == '3.') {
+            output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'You currently are saving ' + (Number(localStorage.savingPercent)*100);
+        }
+
+
+
+
+
+
         document.getElementById('Output').scrollTop += 10000000;
         document.getElementById('input').value = '';
     }
