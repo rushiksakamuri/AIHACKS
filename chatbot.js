@@ -3,11 +3,36 @@
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
 let pieChart = true;
+let nameInput = document.getElementById('nameInput');
+if (JSON.stringify(nameInput) != 'null' && localStorage.annualSalary != undefined) {
+    let currentSavingsInput = document.getElementById('currentsavingsInput');
+    let salaryInput = document.getElementById('salaryInput');
+    let retirementInput = document.getElementById('retirementInput');
+    let utilitiesInput = document.getElementById('utilitiesInput');
+    //let investmentInput = document.getElementById('investmentInput');
+    let carInput = document.getElementById('carInput');
+    let discretionaryInput = document.getElementById('discretionaryInput');
+    let foodInput = document.getElementById('foodInput');
+    let goalInput = document.getElementById('goalInput');
+    let rentInput = document.getElementById('rentInput');
+    currentSavingsInput.innerHTML = localStorage.savings;
+    salaryInput.innerHTML = localStorage.annualSalary;
+    retirementInput.innerHTML = localStorage.yearsLeft;
+    utilitiesInput.innerHTML = localStorage.utilities;
+    //investmentInput.innerHTML = 0 ;
+    carInput.innerHTML = localStorage.car;
+    discretionaryInput.innerHTML = (1- Number(localStorage.savingPercent)) * Number(localStorage.totalRemaining) ;
+    savingsInput.innerHTML = Number(localStorage.savingPercent) * Number(localStorage.totalRemaining) ;
+    goalInput.innerHTML = localStorage.goal ;
+    foodInput.innerHTML = localStorage.food ;
+    rentInput.innerHTML = localStorage.rent ;
 
+
+}
 function Edit() {
     
     let nameInput = document.getElementById('nameInput');
-    let currentSavingsInput = document.getElementById('currentSavingsInput');
+    let currentSavingsInput = document.getElementById('currentsavingsInput');
     let salaryInput = document.getElementById('salaryInput');
     let retirementInput = document.getElementById('retirementInput');
     let utilitiesInput = document.getElementById('utilitiesInput');
@@ -25,7 +50,7 @@ function Edit() {
         salaryInput.setAttribute('readonly', false);
         retirementInput.setAttribute('readonly', false);
         utilitiesInput.setAttribute('readonly', false);
-        investmentInput.setAttribute('readonly', false);
+        //investmentInput.setAttribute('readonly', false);
         carInput.setAttribute('readonly', false);
         discretionaryInput.setAttribute('readonly', false);
         foodInput.setAttribute('readonly', false);
@@ -39,7 +64,7 @@ function Edit() {
         salaryInput.setAttribute('readonly', true);
         retirementInput.setAttribute('readonly', true);
         utilitiesInput.setAttribute('readonly', true);
-        investmentInput.setAttribute('readonly', true);
+        //investmentInput.setAttribute('readonly', true);
         carInput.setAttribute('readonly', true);
         discretionaryInput.setAttribute('readonly', true);
         foodInput.setAttribute('readonly', true);
@@ -49,17 +74,30 @@ function Edit() {
 }   
 
 function SaveData() {
+    let nameInput = document.getElementById('nameInput');
+    let currentSavingsInput = document.getElementById('currentsavingsInput');
+    let salaryInput = document.getElementById('salaryInput');
+    let retirementInput = document.getElementById('retirementInput');
+    let utilitiesInput = document.getElementById('utilitiesInput');
+    let investmentInput = document.getElementById('investmentInput');
+    let carInput = document.getElementById('carInput');
+    let discretionaryInput = document.getElementById('discretionaryInput');
+    let foodInput = document.getElementById('foodInput');
+    let goalInput = document.getElementById('goalInput');
+    let rentInput = document.getElementById('rentInput');
+
+
     localStorage.setItem('name', nameInput.innerHTML);
     localStorage.setItem('savings', currentSavingsInput.innerHTML);
     localStorage.setItem('annualSalary', salaryInput.innerHTML);
     localStorage.setItem('yearsLeft', retirementInput.innerHTML);
     localStorage.setItem('rent', rentInput.innerHTML);
     //localStorage.setItem('savingsPercent', Input.innerHTML);
-    localStorage.setItem('utilities', Input.innerHTML);
-    localStorage.setItem('discretionary', Input.innerHTML);
-    localStorage.setItem('car', Input.innerHTML);
-    localStorage.setItem('food', Input.innerHTML);
-    localStorage.setItem('goal', Input.innerHTML);
+    localStorage.setItem('utilities', utilitiesInput.innerHTML);
+    localStorage.setItem('discretionary', discretionaryInput.innerHTML);
+    localStorage.setItem('car', carInput.innerHTML);
+    localStorage.setItem('food', foodInput.innerHTML);
+    localStorage.setItem('goal', goalInput.innerHTML);
 }
 
 if (localStorage.name != undefined) {
@@ -360,13 +398,7 @@ function makeLineChart() {
     
     console.log(data);
     let backgroundColor = [
-        "#878BB6",
-        "#4ACAB4",
-        "#FF8153",
-        "#a2add0",
-        "#FFEA88",
-        "#c6e2ff",
-        "#b3dca0"
+        "FFFFFF"
     ];
     if (!(localStorage.yearsLeft == undefined)) {
         let i = 1;
@@ -377,14 +409,9 @@ function makeLineChart() {
             i++;
         }
         console.log(labels);
-        
-       
-        
-        
         console.log(data);
         backgroundColor = [
-            "#878BB6",
-            "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6", "#878BB6",
+            "FFFFFF"
         ];
     }
     expensesLineChart = new Chart(myChart, {
