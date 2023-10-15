@@ -150,13 +150,13 @@ input.addEventListener('keydown', function (event) {
             if ((Number(input.value) % 1 === 0)) {
                 localStorage.setItem('goal', Number(input.value));
                 output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'Thats a good goal!\n';
-                localStorage(userArray, []);
+                //localStorage(userArray, []);
                 localStorage.setItem('totalSaved', (localStorage.savingPercent * localStorage.totalRemaining * 12 * localStorage.yearsLeft + Number(localStorage.savings)));
                 if (Number(localStorage.totalSaved) >= Number(localStorage.goal)) {
-                    output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + localStorage.totalSaved.toFixed(2) + ' saved up by the time you retire! Looks like you\'re already on track to reach your goal of $' + localStorage.goal + '!';
+                    output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + Number(localStorage.totalSaved).toFixed(2) + ' saved up by the time you retire! Looks like you\'re already on track to reach your goal of $' + localStorage.goal + '!';
                 }
                 else {
-                    output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + localStorage.totalSaved.toFixed(2) + ' saved up by the time you retire. You\'ll have to save your money wisely to reach your goal of $' + localStorage.goal + '.';
+                    output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + Number(localStorage.totalSaved).toFixed(2) + ' saved up by the time you retire. You\'ll have to save your money wisely to reach your goal of $' + localStorage.goal + '.';
                 }
             }
             else {
@@ -169,7 +169,7 @@ input.addEventListener('keydown', function (event) {
         }
 
         else {
-            output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'You have input all necessary data! You make $' + localStorage.annualSalary.toFixed(2) + ' a year and have an extra $' + ((Number(localStorage.annualSalary) / 12) - Number(localStorage.totalExpenses)).toFixed(2) + ' a month after all expenses are paid!';
+            output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'You have input all necessary data! You make $' + Number(localStorage.annualSalary).toFixed(2) + ' a year and have an extra $' + ((Number(localStorage.annualSalary) / 12) - Number(localStorage.totalExpenses)).toFixed(2) + ' a month after all expenses are paid!';
         }
         document.getElementById('Output').scrollTop += 10000000;
         document.getElementById('input').value = '';
@@ -182,27 +182,29 @@ function redirect(page) {
     console.log('redirected to ' + page);
 };
 
-let myChart = document.getElementById('myChart').getContext('2d');
-if (!(localStorage.savingPercent == undefined)) {
+function makePieChart() {
+    let myChart = document.getElementById('myChart').getContext('2d');
+    if (!(localStorage.savingPercent == undefined)) {
 
-    let data = [
-        localStorage.rent,
-        localStorage.utilities,
-        localStorage.car,
-        localStorage.food,
-        localStorage.additional,
-        localStorage.savingPercent * localStorage.totalRemaining,
-        (1 - localStorage.savingPercent) * localStorage.totalRemaining
-    ];
-    let expensesPieChart = new Chart(myChart, {
-        type: 'pie',
-        data: {
-            labels: ['Rent', 'Utilities', 'Car', 'Food', 'Additional Expenses', 'Saving', 'Discretionary'],
-            datasets: [{
-                label: 'Spending',
-                data: data
-            }]
-        },
-        options: {}
-    });
+        let data = [
+            localStorage.rent,
+            localStorage.utilities,
+            localStorage.car,
+            localStorage.food,
+            localStorage.additional,
+            localStorage.savingPercent * localStorage.totalRemaining,
+            (1 - localStorage.savingPercent) * localStorage.totalRemaining
+        ];
+        let expensesPieChart = new Chart(myChart, {
+            type: 'pie',
+            data: {
+                labels: ['Rent', 'Utilities', 'Car', 'Food', 'Additional Expenses', 'Saving', 'Discretionary'],
+                datasets: [{
+                    label: 'Spending',
+                    data: data
+                }]
+            },
+            options: {}
+        });
+    }
 }
