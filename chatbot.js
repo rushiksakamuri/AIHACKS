@@ -181,5 +181,20 @@ function redirect(page) {
         window.location.href = page + ".html";
         console.log('redirected to ' + page);
 };
+let myChart = document.getElementById('c1').getContext('2d');
+let testChart = new Chart(myChart, {
+    type: 'pie',
+    data: {
+        labels: [red, green, blue],
+        datasets:[{
+            label: 'testing',
+            data: [
+                100,
+                200,
+                300
+            ]
+        }]
 
-function pieChart() { }
+    },
+    options: {}
+});
