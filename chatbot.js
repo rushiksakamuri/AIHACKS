@@ -1,9 +1,50 @@
-
-//npm i chart.js
-
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
-//if (localStorage.name != undefined) { output.innerHTML = 'Good to see you again ' + localStorage.name + '!\nWhat are you looking to do today?' };
+if (localStorage.name != undefined) {
+    output.innerHTML = 'Good to see you again ' + localStorage.name + '!'
+    if (localStorage.annualSalary == undefined || localStorage.rent == undefined || localStorage.utilities == undefined || localStorage.hasCar == undefined || localStorage.car == undefined || localStorage.food == undefined || localStorage.name == yearsLeft || localStorage.name == totalExpenses || localStorage.totalSaved == undefined) {
+        output.innerHTML = output.innerHTML + ' Let\'s finish setting up your account!';
+        if (localStorage.annualSalary == undefined) {
+            output.innerHTML = output.innerHTML + '\nWhat is your current annual salary?';
+        }
+        else if (localStorage.rent == undefined) {
+            output.innerHTML = output.innerHTML + '\nWhat is your current monthly rent payment?';
+        }
+        else if (localStorage.utilities == undefined) {
+            output.innerHTML = output.innerHTML + '\nWhat are your current monthly utility charges?';
+        }
+        else if (localStorage.hasCar == undefined) {
+            output.innerHTML = output.innerHTML + '\nDo you make payments on a car?';
+        }
+        else if (localStorage.car == undefined) {
+            output.innerHTML = output.innerHTML + '\nWhat are your current monthly car payments?';
+        }
+        else if (localStorage.food == undefined) {
+            output.innerHTML = output.innerHTML + '\nHow much do you spend a month on food?';
+        }
+        else if (localStorage.additional == undefined) {
+            output.innerHTML = output.innerHTML + '\nWhat are your monthly expenses on loan payments and insurance?';
+        }
+        else if (localStorage.savings == undefined) {
+            output.innerHTML = output.innerHTML + '\nHow much do you currently have in savings?';
+        }
+        else if (localStorage.yearsLeft == undefined) {
+            output.innerHTML = output.innerHTML + '\nIn how many years do you hope to retire?';
+        }
+        else if (localStorage.savingPercent == undefined) {
+            output.innerHTML = output.innerHTML + '\nWhat percent of additional money a month do you want to save or invest?';
+        }
+        else if (localStorage.goal == undefined) {
+            output.innerHTML = output.innerHTML + '\nHow much money do you hope to have saved by the time you retire?';
+        }
+
+        
+    }
+    
+
+
+
+};
 
 console.log(localStorage.name);
 input.addEventListener('keydown', function (event) {
@@ -150,7 +191,7 @@ input.addEventListener('keydown', function (event) {
             if ((Number(input.value) % 1 === 0)) {
                 localStorage.setItem('goal', Number(input.value));
                 output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'Thats a good goal!\n';
-                //localStorage(userArray, []);
+                //localSeresdfdfsdsftorage(userArray, []);
                 localStorage.setItem('totalSaved', (localStorage.savingPercent * localStorage.totalRemaining * 12 * localStorage.yearsLeft + Number(localStorage.savings)));
                 if (Number(localStorage.totalSaved) >= Number(localStorage.goal)) {
                     output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + Number(localStorage.totalSaved).toFixed(2) + ' saved up by the time you retire! Looks like you\'re already on track to reach your goal of $' + localStorage.goal + '!';
