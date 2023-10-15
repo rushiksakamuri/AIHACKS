@@ -1,5 +1,6 @@
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
+
 if (localStorage.name != undefined) {
     output.innerHTML = 'Good to see you again ' + localStorage.name + '!'
     if (localStorage.annualSalary == undefined || localStorage.rent == undefined || localStorage.utilities == undefined || localStorage.hasCar == undefined || localStorage.car == undefined || localStorage.food == undefined || localStorage.name == yearsLeft || localStorage.name == totalExpenses || localStorage.totalSaved == undefined) {
@@ -36,14 +37,8 @@ if (localStorage.name != undefined) {
         }
         else if (localStorage.goal == undefined) {
             output.innerHTML = output.innerHTML + '\nHow much money do you hope to have saved by the time you retire?';
-        }
-
-        
+        }   
     }
-    
-
-
-
 };
 
 console.log(localStorage.name);
@@ -185,7 +180,6 @@ input.addEventListener('keydown', function (event) {
             else {
                 output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'Please enter only the number amount.'
             }
-
         }
         else if (localStorage.goal == undefined) {
             if ((Number(input.value) % 1 === 0)) {
@@ -203,12 +197,7 @@ input.addEventListener('keydown', function (event) {
             else {
                 output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'Please enter only the number amount.'
             }
-
-
-
-
         }
-
         else {
             output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'You have input all necessary data! You make $' + Number(localStorage.annualSalary).toFixed(2) + ' a year and have an extra $' + ((Number(localStorage.annualSalary) / 12) - Number(localStorage.totalExpenses)).toFixed(2) + ' a month after all expenses are paid!';
         }
