@@ -1,4 +1,6 @@
-import Chart from 'chart.js/auto';
+
+//npm i chart.js
+import Chart from 'chart.js'
 let input = document.getElementById('input');
 let output = document.getElementById('Output');
 if (localStorage.name != undefined) { output.innerHTML = 'Good to see you again ' + localStorage.name + '!\nWhat are you looking to do today?'};
@@ -148,12 +150,13 @@ input.addEventListener('keydown', function (event) {
             if ((Number(input.value) % 1 === 0)) {
                 localStorage.setItem('goal', Number(input.value));
                 output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'Thats a good goal!\n';
+                localStorage(userArray, []);
                 localStorage.setItem('totalSaved', (localStorage.savingPercent * localStorage.totalRemaining * 12 * localStorage.yearsLeft +  Number(localStorage.savings)));
                 if (Number(localStorage.totalSaved) >= Number(localStorage.goal)) {
-                    output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + localStorage.totalSaved + ' saved up by the time you retire! Looks like you\'re already on track to reach your goal of $' + localStorage.goal + '!';
+                    output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + localStorage.totalSaved.toFixed(2) + ' saved up by the time you retire! Looks like you\'re already on track to reach your goal of $' + localStorage.goal + '!';
                 }
                 else {
-                    output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + localStorage.totalSaved + ' saved up by the time you retire. You\'ll have to save your money wisely to reach your goal of $' + localStorage.goal + '.';
+                    output.innerHTML = output.innerHTML + 'If you keep saving at your current rate for the next ' + localStorage.yearsLeft + ' years you\'ll have $' + localStorage.totalSaved.toFixed(2) + ' saved up by the time you retire. You\'ll have to save your money wisely to reach your goal of $' + localStorage.goal + '.';
                 }
             }
             else {
@@ -166,8 +169,9 @@ input.addEventListener('keydown', function (event) {
         }
 
         else {
-            output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'You have input all necessary data! You make $' + localStorage.annualSalary + ' a year and have an extra $' + ((Number(localStorage.annualSalary) / 12) - Number(localStorage.totalExpenses)) + ' a month after all expenses are paid!';
+            output.innerHTML = output.innerHTML + '\n\n' + input.value + '\n\n' + 'You have input all necessary data! You make $' + localStorage.annualSalary.toFixed(2) + ' a year and have an extra $' + ((Number(localStorage.annualSalary) / 12) - Number(localStorage.totalExpenses)).toFixed(2) + ' a month after all expenses are paid!';
         }
+        document.getElementById('Output').scrollTop += 10000000;
         document.getElementById('input').value = '';
     }
 })
